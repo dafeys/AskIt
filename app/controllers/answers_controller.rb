@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :set_question!, :set_answer!
+  before_action :set_question!
+  before_action :set_answer!, except: :create
 
   def create
     @answer = @question.answers.build answer_params
@@ -8,7 +9,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Your answer was successfully created"
       redirect_to question_path(@question)
     else
-      @answers = Answer.order created_at: :desc
+      @answers = @question.answers.order created_at: :desc
       render 'questions/show'
     end
   end
@@ -25,7 +26,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update answer_params
-      flash[:success] = "Question updated successfully!"
+      flash[:success] = "Answer updated successfully!"
       redirect_to @question
     else
       render :edit

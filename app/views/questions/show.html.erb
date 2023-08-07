@@ -18,7 +18,7 @@
 
 <hr class="my-3">
 
-<h2>Write your answer</h2>
+<h2 class="mb-3">Write your answer</h2>
 
 <%= render 'answers/form' %>
 
@@ -26,3 +26,5 @@
 
 <%= render partial: 'answers/answer', collection: @answers,
   as: :answer, locals: {question: @question} %>
+
+<%= paginate @answers %>

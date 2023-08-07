@@ -3,7 +3,9 @@
 
 <h1 class="mb-4">Questions</h1>
 
-<%= link_to "New question", new_question_path, class: "btn btn-primary" %>
+<%= link_to "New question", new_question_path, class: "mb-4 btn btn-primary" %>
+
+<%= paginate @questions %>
 
 <% @questions.each do |question| %>
   <article class="card mt-3">
@@ -27,4 +29,8 @@
     </div>
   </article>
 <% end %>
+
+<br>
+
+<%= paginate @questions %>
 

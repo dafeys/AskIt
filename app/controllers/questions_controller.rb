@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   before_action :set_question!, only: %i[show destroy edit update]
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+    @pagy, @questions = pagy(Question.order(created_at: :desc), items: 20)
+    #@questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -41,7 +42,8 @@ class QuestionsController < ApplicationController
     @answer = @question.answers.build
     #@answers = Answer.order created_at: :desc
     #@answers = Answer.where(question_id: @question).order(created_at: :desc)
-    @answers = @question.answers.order(created_at: :desc).page params[:page]
+    @pagy, @answers = pagy(@question.answers.order(created_at: :desc), items: 5)
+    #@answers = @question.answers.order(created_at: :desc).page params[:page]
   end
 
   private

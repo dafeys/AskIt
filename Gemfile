@@ -25,7 +25,8 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 # Pagination
-gem 'kaminari', '~> 1.2'
+#gem 'kaminari', '~> 1.2'
+gem 'pagy', '~> 6.0'
 
 
 # Use Redis adapter to run Action Cable in production

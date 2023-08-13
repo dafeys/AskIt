@@ -1,6 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :question
-  paginates_per 10
 
   validates :body, presence: true, length: {minimum: 5, maximum: 1000}
 
